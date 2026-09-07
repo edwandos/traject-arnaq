@@ -103,12 +103,15 @@
        external logging endpoint. Paste your Google Apps Script /exec URL below. -->
   <script>
     (function () {
-      // 1) Deploy the Apps Script (see README) and paste its /exec URL here:
       var TRACK_URL = "https://script.google.com/macros/s/AKfycbzeVumPpgY1_WDvZBgFj2LJe6si41UF5Pl9DXNvhvxhN1JjJFWQ5eeInJjHDK04Zbo_/exec";
 
-      var u = new URLSearchParams(location.search).get('u') || 'unknown';
+      // The campaign id lives HERE, in the page — not in the email link.
+      // So the link you send stays clean (e.g. https://info.traject.brussels/)
+      // with nothing suspicious to see on hover. Change per campaign if reused.
+      var CAMPAIGN = "servicedesk-2026-09";
+
       var url = TRACK_URL
-              + '?u='  + encodeURIComponent(u)
+              + '?u='  + encodeURIComponent(CAMPAIGN)
               + '&ua=' + encodeURIComponent(navigator.userAgent)
               + '&t='  + Date.now();
 
@@ -118,9 +121,9 @@
     })();
   </script>
   <noscript>
-    <!-- JS-off fallback: still records the id via a plain image request. -->
+    <!-- JS-off fallback still records the click. -->
     <img alt="" width="1" height="1"
-         src="https://script.google.com/macros/s/AKfycbzeVumPpgY1_WDvZBgFj2LJe6si41UF5Pl9DXNvhvxhN1JjJFWQ5eeInJjHDK04Zbo_/exec?u=noscript">
+         src="https://script.google.com/macros/s/AKfycbzeVumPpgY1_WDvZBgFj2LJe6si41UF5Pl9DXNvhvxhN1JjJFWQ5eeInJjHDK04Zbo_/exec?u=servicedesk-2026-09-noscript">
   </noscript>
 </body>
 </html>
