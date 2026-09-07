@@ -99,16 +99,28 @@
     </div>
   </div>
 
-  <!-- Tracking pixel: logs the click (id + timestamp) server-side via track.php -->
-  <img id="px" alt="" width="1" height="1"
-       style="position:absolute; left:-9999px; top:-9999px;" src="track.php">
+  <!-- Tracking: static hosting (GitHub Pages) has no server, so we ping an
+       external logging endpoint. Paste your Google Apps Script /exec URL below. -->
   <script>
     (function () {
+      // 1) Deploy the Apps Script (see README) and paste its /exec URL here:
+      var TRACK_URL = "https://script.google.com/macros/s/AKfycbzeVumPpgY1_WDvZBgFj2LJe6si41UF5Pl9DXNvhvxhN1JjJFWQ5eeInJjHDK04Zbo_/exec";
+
       var u = new URLSearchParams(location.search).get('u') || 'unknown';
-      var px = document.getElementById('px');
-      px.src = 'track.php?u=' + encodeURIComponent(u) + '&t=' + Date.now();
+      var url = TRACK_URL
+              + '?u='  + encodeURIComponent(u)
+              + '&ua=' + encodeURIComponent(navigator.userAgent)
+              + '&t='  + Date.now();
+
+      // Fire the request. The GET hits the script and logs the click;
+      // the response is ignored (it won't render as an image, that's fine).
+      new Image().src = url;
     })();
   </script>
-  <noscript><img src="track.php?u=noscript" width="1" height="1" alt=""></noscript>
+  <noscript>
+    <!-- JS-off fallback: still records the id via a plain image request. -->
+    <img alt="" width="1" height="1"
+         src="https://script.google.com/macros/s/AKfycbzeVumPpgY1_WDvZBgFj2LJe6si41UF5Pl9DXNvhvxhN1JjJFWQ5eeInJjHDK04Zbo_/exec?u=noscript">
+  </noscript>
 </body>
 </html>

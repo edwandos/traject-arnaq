@@ -1,7 +1,0 @@
-# Keep the raw click log private (it contains IP addresses = personal data).
-<Files "clicks.tsv">
-    Require all denied
-</Files>
-
-# Don't index this page in search engines.
-Header set X-Robots-Tag "noindex, nofollow"
