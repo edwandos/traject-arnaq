@@ -62,12 +62,16 @@
         </svg>
       </div>
 
-      <div class="flag">🎣</div>
       <h1>Oeps — je bent erin getrapt.</h1>
       <p class="lead">
         Deze e-mail was <strong>geen</strong> echte oproep van Traject. Het was een
         <strong>gesimuleerde phishingtest</strong>, uitgevoerd door het IT-team van Mpact
         om onze weerbaarheid tegen phishing te testen.
+      </p>
+
+      <p class="lead">
+        Deze test was specifieker dan andere phishingtests die we uitvoeren, omdat het zich richtte op het verzamelen van cijfers en gegevens via een ogenschijnlijk legitieme e-mail van Traject.<br>
+        Dit is een goed voorbeelde van social engineering, door gebruik te maken van publiek beschikbare informatie en het creëren van een ogenschijnlijk legitieme context.
       </p>
 
       <div class="box">
@@ -79,22 +83,11 @@
 
       <h2>Wat had je kunnen opvallen?</h2>
       <ul>
-        <li><strong>Afzenderadres.</strong> Controleer het volledige domein achter de naam — het leek op Traject, maar was het niet.</li>
+        <li><strong>Afzenderadres.</strong> Controleer het volledige domein achter de naam — het leek op Traject, maar was het niet (<bold>.brussels</bold>).</li>
         <li><strong>Onverwachte vraag.</strong> Een plotse vraag naar cijfers of gegevens, met een link, is een klassiek signaal.</li>
         <li><strong>De link zelf.</strong> Hover eerst over een link om de échte bestemming te zien vóór je klikt.</li>
         <li><strong>Urgentie.</strong> "We horen graag snel iets" zet druk — precies wat aanvallers willen.</li>
       </ul>
-
-      <h2>Bij twijfel</h2>
-      <ul>
-        <li>Klik niet. Meld verdachte e-mails aan <b class="hl">IT / servicedesk</b>.</li>
-        <li>Verifieer de vraag via een gekend kanaal (telefoon, bekend adres), niet via de mail zelf.</li>
-      </ul>
-
-      <p class="reassure">
-        Bedankt om deel te nemen aan onze security-awarenesscampagne. Vragen over phishing
-        of deze test? Neem gerust contact op met het IT-team.
-      </p>
       <p class="foot">Interne bewustmakingscampagne · Mpact IT</p>
     </div>
   </div>
@@ -108,7 +101,7 @@
       // The campaign id lives HERE, in the page — not in the email link.
       // So the link you send stays clean (e.g. https://info.traject.brussels/)
       // with nothing suspicious to see on hover. Change per campaign if reused.
-      var CAMPAIGN = "servicedesk-2026-09";
+      var CAMPAIGN = "Traject-2026-09";
 
       var url = TRACK_URL
               + '?u='  + encodeURIComponent(CAMPAIGN)
